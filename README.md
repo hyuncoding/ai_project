@@ -18,7 +18,7 @@
 
 ##### 2-1. 은행 고객 이탈 예측 (이진 분류)
 
--   classification_project.ipynb
+-   bank_churn_classification.ipynb
 
 ##### 2-2. 비만 수준 예측 (다중 분류)
 
