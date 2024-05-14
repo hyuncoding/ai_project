@@ -81,18 +81,18 @@ _🎈Cycle 4_
 -   히스토그램으로 분포를 확인해본 결과, 종속변수의 분포가 좌측으로 치우쳐 나타났습니다.
 -   좌측은 원본 종속변수의 분포, 우측은 log1p 스케일링을 적용한 종속변수의 분포입니다.
 
-<img src="./images/energy_target_hist.png" width="300px"><img src="./images/energy_target_log1p_hist.png" width="300px">
+<img src="../images/energy_target_hist.png" width="300px"><img src="../images/energy_target_log1p_hist.png" width="300px">
 
 -   따라서 종속변수에 log1p 스케일링을 적용했습니다.
 -   또한 회귀 예측에 불필요하다고 판단하여 date feature를 삭제했습니다.
 -   아래는 나머지 독립변수들과 종속변수의 상관관계를 히트맵으로 시각화한 자료입니다.
 
-<img src="./images/energy_corr_heatmap.png">
+<img src="../images/energy_corr_heatmap.png">
 
 -   독립변수 간의 상관관계가 대체로 크게 나타났습니다.
 -   또한, 종속변수와의 상관관계가 높은 feature를 확인하기 어려워 수치로 확인해보았습니다.
 
-<img src="./images/energy_corr.png" width="200px">
+<img src="../images/energy_corr.png" width="200px">
 
 -   종속변수와의 상관관계 절댓값이 0.3을 넘는 독립변수가 존재하지 않았습니다.
 -   feature의 개수 또한 date 삭제 후에도 총 27개이므로, 차원 축소를 진행해야 한다고 판단했습니다.
@@ -194,7 +194,7 @@ MSE: 0.2797, RMSE: 0.5288, MSLE: 0.0089, RMSLE: 0.0942, R2: 0.2873</code>
 
 -   lights feature의 분포를 확인한 결과 아래와 같았습니다.
 
-<img src="./images/energy_lights_hist.png">
+<img src="../images/energy_lights_hist.png">
 
 -   `value_counts()`를 통해 분포 비중을 수치로 확인해봅니다.
 
@@ -307,4 +307,4 @@ MSE: 0.1876, RMSE: 0.4331, MSLE: 0.0060, RMSLE: 0.0772, R2: 0.5220</code>
 
 -   각 Cycle 별 최고 성능을 보인 모델의 R<sup>2</sup>와 MSE Loss를 비교하여 시각화한 자료입니다.
 
-<img src="./images/energy_final_results.png">
+<img src="../images/energy_final_results.png">

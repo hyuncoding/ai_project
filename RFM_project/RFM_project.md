@@ -51,14 +51,14 @@
 -   Date 컬럼의 `dtype`을 `pd.to_datetime()`을 통해 날짜 형식으로 변환하였습니다.
 -   Date 컬럼의 값을 `describe()`을 통해 확인한 결과, 아래처럼 문제가 없었습니다.
 
-<img src="./images/rfm_date_describe.png" width="300px">
+<img src="../images/rfm_date_describe.png" width="300px">
 
 -   최종 주문 수량(Final Quantity)의 값이 0인 경우, 구매/취소/환불 모두 해당하지 않으므로  
     RFM 산정 시 제외하기 위해 삭제하였습니다.
 -   총 수익(Total Revenue)와 할인 가격(Price Reductions)의 분포를 `describe()`로 살펴보았습니다.
 
-<img src="./images/rfm_total_revenue_describe.png" width="500px">
-<img src="./images/rfm_price_reductions_describe.png" width="500px">
+<img src="../images/rfm_total_revenue_describe.png" width="500px">
+<img src="../images/rfm_price_reductions_describe.png" width="500px">
 
 -   총 수익의 경우 구매 데이터의 경우 양수, 취소/환불의 경우 0을 값으로 가지며 음수가 존재하지 않으므로,  
     모델 학습이 아닌 데이터 분석의 관점에서 보았을 때의 이상치는 존재하지 않았습니다.
@@ -76,7 +76,7 @@
     총액인 Overall Revenue를 기준으로 계산할 예정이므로,  
     Total Revenue, Price Reductions, Final Revenue, Sales Tax 컬럼을 삭제하였습니다.
 
-<img src="./images/rfm_preprocessed_data.png">
+<img src="../images/rfm_preprocessed_data.png">
 
 #### 2. RFM 점수 산정
 
@@ -91,64 +91,64 @@
 -   고객의 id(Buyer ID)로 `groupby()`를 통해 RFM을 각각 계산하였습니다.
 -   가장 최근 날짜를 기준으로 각 구매 데이터의 날짜와의 차이를 구하여 Recency 컬럼에 저장하였습니다.
 
-<img src="./images/rfm_recency.png" width="200px">
+<img src="../images/rfm_recency.png" width="200px">
 
 -   구매 수량의 총합을 구하여 Frequency 컬럼에 저장하였습니다.
 
-<img src="./images/rfm_frequency.png" width="200px">
+<img src="../images/rfm_frequency.png" width="200px">
 
 -   취소/환불 금액을 포함한 결제 총액을 구하여 Monetary 컬럼에 저장하였습니다.
 
-<img src="./images/rfm_monetary.png" width="200px">
+<img src="../images/rfm_monetary.png" width="200px">
 
 -   Recency, Frequency, Monetary에 대한 각각의 데이터프레임을 하나로 `merge`하였습니다.
 
-<img src="./images/rfm_merged_rfm.png" width="300px">
+<img src="../images/rfm_merged_rfm.png" width="300px">
 
 -   scikit-learn의 `MinMaxScaler`을 활용하여 0~1 사이의 값으로 각 수치를 정규화하였습니다.
 -   이 때, **제일 최근 날짜일 수록 더 큰 Recency**값을 가져야 하므로,  
     Recency 컬럼의 값을 각각 1에서 뺀 값으로 대체하였습니다.
 -   Recency, Frequency, Monetary 수치를 더한 값을 TotalScore 컬럼에 저장하였습니다.
 
-<img src="./images/rfm_total_score.png" width="400px">
+<img src="../images/rfm_total_score.png" width="400px">
 
 -   원본 데이터프레임에 Buyer ID를 기준으로 merge하여 TotalScore 컬럼을 추가하였습니다.
 
-<img src="./images/rfm_merged_data.png">
+<img src="../images/rfm_merged_data.png">
 
 #### 3. RFM 점수에 따른 고객 등급 분류
 
 -   RFM 점수에 따라 Bronze, Silver, Gold, Diamond, VIP의 총 5개 등급으로 고객을 그룹화하였습니다.
 
-<img src="./images/rfm_customer_levels.png">
-<img src="./images/rfm_levels.png" width="200px">
+<img src="../images/rfm_customer_levels.png">
+<img src="../images/rfm_levels.png" width="200px">
 
 #### 4. 데이터 시각화 및 분석
 
 ##### 1) 📌등급별 고객 수 시각화
 
-<img src="./images/rfm_customers_by_level.png" width="600px">
+<img src="../images/rfm_customers_by_level.png" width="600px">
 
 -   Silver와 Gold 등급의 고객 수가 가장 많고, Bronze와 Diamond 등급의 고객 수는 그 다음으로 많았으며  
     VIP 등급의 고객 수는 상대적으로 적게 나타났습니다.
 
 ##### 2) 📌등급별 구매 빈도 및 매출액 시각화
 
-<img src="./images/rfm_frequencies_totals_by_levels.png">
+<img src="../images/rfm_frequencies_totals_by_levels.png">
 
 -   고객 등급별 구매 빈도와 매출액을 시각화한 결과, 두 그래프 모두 비슷한 양상을 보였습니다.
 -   따라서 모든 등급에서 구매 빈도가 높은 고객일 수록 매출액에 기여하는 비중이 크다고 볼 수 있습니다.
 
 ##### 3) 📌등급별 카테고리에 따른 구매 빈도 및 매출액 시각화
 
-<img src="./images/rfm_frequencies_totals_by_categories_levels.png">
+<img src="../images/rfm_frequencies_totals_by_categories_levels.png">
 
 -   앞서 구매 빈도와 매출액의 고객 등급별 분포가 유사한 양상을 보였던 것처럼,  
     카테고리에 따른 구매 빈도와 매출액 또한 유사한 분포 양상을 보였습니다.
 -   따라서 매출액의 비중에 주목하여, 특히 매출액 기준 상위 4개 카테고리인 P, H, D, B를  
     파이 그래프로 나타냄으로써 등급별 비중을 자세히 분석하고자 하였습니다.
 
-<img src="./images/rfm_p_h_d_b_by_levels.png">
+<img src="../images/rfm_p_h_d_b_by_levels.png">
 
 -   B 카테고리의 경우 Bronze 등급의 매출액 비중이 가장 높게 나타났으며,  
     등급이 상승할 수록 매출액 비중이 낮아지는 양상을 보였습니다.
@@ -167,7 +167,7 @@
 -   해당 가설을 검증하기 위해 앞서 분석했던 4개의 카테고리(P, H, D, B)를 대상으로  
     거래별 평균 구매 수량을 시각화하였습니다.
 
-<img src="./images/rfm_p_h_d_b_mean_amounts.png" width="500px">
+<img src="../images/rfm_p_h_d_b_mean_amounts.png" width="500px">
 
 -   다른 카테고리에 비해 평균 구매 수량이 낮아 낮은 Frequency 점수를 보였을 것으로 예상했던  
     영가설 1과는 달리, 매출액 기준 상위 4개의 카테고리 모두 평균 구매 수량은 대체로 비슷했습니다.
@@ -182,7 +182,7 @@
 -   해당 가설을 검증하기 위해 앞서 주목한 4개의 카테고리에 대해 고객이 지불한 수량별 가격을  
     구한 뒤 시각화하였습니다.
 
-<img src="./images/rfm_p_h_d_b_each_price.png" width="500px">
+<img src="../images/rfm_p_h_d_b_each_price.png" width="500px">
 
 -   B 카테고리 제품의 제품 1개 당 평균 가격을 살펴본 결과, 영가설 2와는 반대로 오히려 가장 높은  
     평균 가격 및 가격 분포를 보였습니다.
@@ -198,7 +198,7 @@
 
 -   해당 가설을 검증하기 위해 B 카테고리 제품 판매 데이터 중 판매 날짜에 주목하였습니다.
 
-<img src="./images/rfm_overall_revenue_by_date.png">
+<img src="../images/rfm_overall_revenue_by_date.png">
 
 -   대체로 B 카테고리의 제품을 구매한 데이터는 Recency 점수를 감소시킬 수 있는,  
     최근보다는 이전의 날짜에 주로 분포하는 것을 확인할 수 있습니다.

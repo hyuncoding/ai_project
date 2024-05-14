@@ -31,7 +31,7 @@
 -   결측치가 존재하지 않았으며, 약 25개의 중복행을 삭제하였습니다.
 -   독립변수와 종속변수를 포함하여 상관관계를 히트맵으로 시각화한 결과는 아래와 같았습니다.
 
-<img src="./images/concrete_corr_heatmap.png">
+<img src="../images/concrete_corr_heatmap.png">
 
 -   독립변수 사이의 상관관계가 0.5 이상인 독립변수는 존재하지 않았습니다.
 -   종속변수와의 상관관계가 어느 정도 나타나는 cement, superplastic, age 등의 상관관계 수치를 확인해봅니다.
@@ -83,13 +83,13 @@
     4. XGBRegressor - RMSE: 4.2289, R2: 0.9287
     5. LGBMRegressor - RMSE: 4.4983, R2: 0.9193
 
-<img src="./images/concrete_evaluation_by_models.png">
+<img src="../images/concrete_evaluation_by_models.png">
 
 -   이 중 XGBRegressor(XGBoost) 모델이 RMSE와 R<sup>2</sup> 기준 가장 좋은 성능을 보였으므로,  
     해당 모델을 사용하여 GridSearchCV를 통해 최적의 하이퍼파라미터를 찾고자 했습니다.
 -   각 하이퍼파라미터 조합에 대해 KFold를 통해 무작위로 10번의 교차 검증을 수행한 결과는 아래와 같았습니다.
 
-<img src="./images/concrete_gridsearchcv.png" width="400px">
+<img src="../images/concrete_gridsearchcv.png" width="400px">
 
 -   GridSearchCV의 `cv_results_`를 통해 확인해본 결과,  
     `max_depth`가 작을 수록, 그리고 대체로 `n_estimators=100`일 때 R<sup>2</sup>가 높았습니다.
@@ -103,13 +103,13 @@
 -   또한 각 독립변수의 p-value는 모두 0.003 이하로 나타났습니다.
 -   VIF를 통해 다중공선성을 확인한 결과는 아래와 같았습니다.
 
-<img src="./images/concrete_vif_before.png" width="200px">
+<img src="../images/concrete_vif_before.png" width="200px">
 
 -   water, coarseagg, fineagg의 VIF가 높아 종속변수와의 상관관계를 확인해본 결과,
     각각 약 -0.26, -0.14, -0.18로 낮게 나타나 삭제한 후 다시 OLS와 VIF를 확인하였습니다.
 -   OLS 상에서 R<sup>2</sup>는 약 0.920, Durbin-Watson은 약 1.864로 나타났으며, VIF는 아래와 같았습니다.
 
-<img src="./images/concrete_vif_after.png" width="200px">
+<img src="../images/concrete_vif_after.png" width="200px">
 
 -   모든 feature의 VIF 수치가 3 미만으로, 다중공선성 문제가 해결되었습니다.
 -   다시 XGBRegressor 모델로 회귀 예측을 수행한 결과는 아래와 같았습니다.
@@ -125,7 +125,7 @@
     실제 예측 결과 R<sup>2</sup>는 약 0.9247로 교차 검증 시에는 큰 문제가 발견되지 않았습니다.
 -   학습 데이터와 테스트 데이터에 대한 모델의 예측값과 실제 정답의 분포를 시각화한 결과는 아래와 같습니다.
 
-<img src="./images/concrete_prediction_label_best.png">
+<img src="../images/concrete_prediction_label_best.png">
 
 <code>MSE: 1.8634, RMSE: 1.3651, MSLE: 0.0022, RMSLE: 0.0469, R2: 0.9931(학습 데이터)  
 MSE: 18.8915, RMSE: 4.3464, MSLE: 0.0214, RMSLE: 0.1462, R2: 0.9247(테스트 데이터)</code>
@@ -134,7 +134,7 @@ MSE: 18.8915, RMSE: 4.3464, MSLE: 0.0214, RMSLE: 0.1462, R2: 0.9247(테스트 �
 -   따라서 `best_estimator_`가 아닌, GridSearchCV에서 R<sup>2</sup> 기준 12위를 기록한 하이퍼파라미터  
     조합으로 모델을 생성하여 학습 및 예측을 수행한 후, 같은 방식으로 시각화하였습니다.
 
-<img src="./images/concrete_prediction_label_bad.png">
+<img src="../images/concrete_prediction_label_bad.png">
 
 <code>MSE: 1.6297, RMSE: 1.2766, MSLE: 0.0018, RMSLE: 0.0424, R2: 0.9939(학습 데이터)  
 MSE: 30.3917, RMSE: 5.5129, MSLE: 0.0365, RMSLE: 0.1911, R2: 0.8788(테스트 데이터)</code>

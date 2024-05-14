@@ -28,7 +28,7 @@
 -   범주형 feature인 'Extracurricular Activities' feature를 제외하였습니다.
 -   독립변수와 종속변수를 포함하여 상관관계를 히트맵으로 시각화한 결과는 아래와 같았습니다.
 
-<img src="./images/student_score_corr_heatmap.png">
+<img src="../images/student_score_corr_heatmap.png">
 
 -   독립변수 사이의 상관관계는 0에 가까운 양상을 띠었습니다.
 
@@ -46,7 +46,7 @@
 -   p-value 또한 모든 독립변수에서 0.000의 값을 보였으며, Durbin-Watson 점수 또한 1.918로 매우 높았습니다.
 -   VIF를 확인해보았을 때 각 독립변수의 vif_score는 아래와 같았습니다.
 
-<img src="./images/student_score_vif.png" width="300px">
+<img src="../images/student_score_vif.png" width="300px">
 
 -   OLS 및 VIF에서 큰 문제가 없다고 판단하여 다른 방식으로 과적합 여부를 판단하기로 했습니다.
 
@@ -58,7 +58,7 @@
 -   따라서 과적합이 발생하지 않았다고 예상되지만, 좀 더 정확한 판단을 위해 직접 검증 데이터를 나누어  
     Pytorch를 통해 loss를 시각화해보았습니다.
 
-<img src="./images/pytorch_loss_cross.png">
+<img src="../images/pytorch_loss_cross.png">
 
 -   훈련 데이터를 다시 `train_test_split()`을 통해 훈련 데이터와 검증 데이터로 나눈 후,  
     각 데이터에 대해 각각 1,000,000번의 epoch를 반복하며 loss의 변화를 기록하였습니다.
@@ -71,7 +71,7 @@
 
 -   LinearRegression 모델로 회귀 예측을 진행했을 때, 학습 데이터와 테스트 데이터에 대한 예측값과 실제 정답을 시각화한 결과는 아래와 같았습니다.
 
-<img src="./images/before_norm_train.png" width="300px"><img src="./images/before_norm_test.png" width="300px">
+<img src="../images/before_norm_train.png" width="300px"><img src="../images/before_norm_test.png" width="300px">
 
 -   과적합은 발생하지 않았다고 판단되지만, 모델의 일반화를 위해 테스트 데이터에서의 R<sup>2</sup>를 약 0.95 수준으로 낮추기 위한 규제를 적용했습니다.
 -   Lasso에서 alpha=9, max_iter=10000으로 설정 후 규제를 적용하였을 때 약 0.9510,  
@@ -80,8 +80,8 @@
 
 📌 Lasso 규제 적용 결과 (왼쪽: 학습 데이터, 오른쪽: 테스트 데이터)
 
-<img src="./images/lasso_train.png" width="300px"><img src="./images/lasso_test.png" width="300px">
+<img src="../images/lasso_train.png" width="300px"><img src="../images/lasso_test.png" width="300px">
 
 📌 Ridge 규제 적용 결과 (왼쪽: 학습 데이터, 오른쪽: 테스트 데이터)
 
-<img src="./images/ridge_train.png" width="300px"><img src="./images/ridge_test.png" width="300px">
+<img src="../images/ridge_train.png" width="300px"><img src="../images/ridge_test.png" width="300px">
