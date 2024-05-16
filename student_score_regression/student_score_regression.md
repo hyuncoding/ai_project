@@ -25,7 +25,14 @@
 #### 1. 데이터 탐색 및 전처리
 
 -   결측치가 존재하지 않았으며, 약 127개의 중복행을 삭제하였습니다.
--   범주형 feature인 'Extracurricular Activities' feature를 제외하였습니다.
+
+<img src="../images/student_score_extracurricular_activities_value_counts.png" width="200px">
+
+-   범주형 feature인 'Extracurricular Activities' feature의 분포는 위와 같이 두 개의 범주가 비슷한 데이터 수를 보였습니다.
+-   하지만, 종속변수와의 상관관계를 확인하였을 때 아래처럼 약 0.02로 매우 낮게 나타나 삭제하기로 결정했습니다.
+
+<img src="../images/student_score_original_corr.png" width="300px">
+
 -   나머지 수치형 feature들과 target의 분포를 히스토그램으로 시각화한 결과는 아래와 같았습니다.
 
 <img src="../images/student_score_hist.png">
