@@ -34,7 +34,7 @@
 
 ##### 2-5. 용융 소자가 잠긴 액체의 종류 예측 (이진 분류)
 
--   water_oil_classification
+-   water_oil_classification.ipynb
 
 #### 3. 회귀
 
