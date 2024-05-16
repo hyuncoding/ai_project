@@ -26,6 +26,10 @@
 
 -   결측치가 존재하지 않았으며, 약 127개의 중복행을 삭제하였습니다.
 -   범주형 feature인 'Extracurricular Activities' feature를 제외하였습니다.
+-   나머지 수치형 feature들과 target의 분포를 히스토그램으로 시각화한 결과는 아래와 같았습니다.
+
+<img src="../images/student_score_hist.png">
+
 -   독립변수와 종속변수를 포함하여 상관관계를 히트맵으로 시각화한 결과는 아래와 같았습니다.
 
 <img src="../images/student_score_corr_heatmap.png">

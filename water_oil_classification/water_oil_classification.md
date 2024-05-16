@@ -32,7 +32,7 @@
 -   종속변수의 분포를 조정하기에 앞서, 각 독립변수의 분포를 보았을 때 대체로 동일한 양상을 띠어  
     `describe()`를 통해 수치로 확인해보았습니다.
 
-<img src="./images/water_oil_describe.png">
+<img src="../images/water_oil_describe.png">
 
 -   모든 독립변수의 평균이나 표준편차 및 4분위 값이 완전히 동일한 값을 취하지는 않지만,  
     대체로 매우 비슷한 분포를 보이고 있습니다.
@@ -62,13 +62,13 @@
 -   LogisticRegression
 -   각 모델별 평가 지표를 시각화한 그래프는 아래와 같았습니다.
 
-<img src="./images/water_oil_eval_dtc_svc_knn_rfc.png">
+<img src="../images/water_oil_eval_dtc_svc_knn_rfc.png">
 
-<img src="./images/water_oil_eval_voting.png">
+<img src="../images/water_oil_eval_voting.png">
 
-<img src="./images/water_oil_eval_boosting.png">
+<img src="../images/water_oil_eval_boosting.png">
 
-<img src="./images/water_oil_eval_all.png" width="1000px">
+<img src="../images/water_oil_eval_all.png" width="1000px">
 
 -   각 모델별 평가 지표를 백분율로 나타낸 결과는 아래와 같습니다.
 
@@ -98,12 +98,12 @@
 
 -   정밀도(precision)와 재현율(recall)의 trade-off를 시각화하였습니다.
 
-<img src="./images/logistic_regression_precision_recall.png">
+<img src="../images/logistic_regression_precision_recall.png">
 
 -   threshold value가 약 0.6일 때를 기준으로 정밀도와 재현율이 서로 교차하고 있음을 알 수 있습니다.
 -   이때의 ROC Curve 또한 시각화하였습니다.
 
-<img src="./images/water_oil_roc_curve.png">
+<img src="../images/water_oil_roc_curve.png">
 
 -   ROC-AUC 값이 약 0.9725로 1에 매우 가깝기 때문에, ROC Curve 아래의 영역 또한 가로 1, 세로 1의  
     직사각형에 가까운 모습을 볼 수 있습니다.
